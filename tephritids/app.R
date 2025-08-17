@@ -7,58 +7,49 @@ library(RColorBrewer)
 microbiota_db <- list(
   "Ceratitis capitata" = list(
     
-    
     "Metagenomics" = list(
       "Mass-reared" = list(
-        refs = list(
-          "Behar et al. 2005" = c("Klebsiella" = 40, "Enterobacter" = 30, "Pantoea" = 20, "Other" = 10),
-          "Ben Ami et al. 2010" = c("Klebsiella" = 35, "Enterobacter" = 35, "Pantoea" = 20, "Other" = 10)
-        ),
+        refs = list(),   # nothing here yet
+        facts = c("No metagenomic studies available yet for mass-reared flies"),
+        image = "no_data_available.jpg"
+      ),
       
-        facts = c(
-          "Metagenomics: captures full genome of all microbes",
-          "Shows rare taxa not detected by 16S"
-        ),
-        image = "app-medfly-metagenomics.jpg"
-      ),
       "Wild" = list(
-        refs = list(
-          "Behar et al. 2005" = c("Klebsiella" = 45, "Enterobacter" = 25, "Pantoea" = 20, "Other" = 10)
-        ),
-        facts = c("Wild flies may have more diverse microbiota"),
-        image = "app-medfly-metagenomics-wild.jpg"
+        refs = list(),
+        facts = c("No metagenomic studies available yet for wild flies"),
+        image = "no_data_available.jpg"
       ),
+      
       "Lab" = list(
-        refs = list(
-          "Mason et al. 2025" = c("Klebsiella" = 30, "Enterobacter" = 40, "Pantoea" = 20, "Other" = 10),
-          "Aoki et al. 2025" = c("Klebsiella" = 30, "Enterobacter" = 40, "Pantoea" = 20, "Other" = 10)
-        ),
-        facts = c("Lab flies may have simplified microbiota due to controlled diet"),
-        image = "app-medfly-metagenomics-lab.jpg"
+        refs = list(),
+        facts = c("No metagenomic studies available yet for lab flies"),
+        image = "no_data_available.jpg"
       )
     ),
     
     
     
     "Long-read 16S" = list(
+      
+      
       "Mass-reared" = list(
         refs = list(
-          "Mason et al. 2025" = c("Klebsiella" = 35, "Enterobacter" = 35, "Pantoea" = 20, "Other" = 10)
+          "Mason et al. 2025" = c("Enterobacter" = 95, "Other" = 5)
         ),
         facts = c("Long-read 16S: high resolution of bacterial species"),
         image = "app-medfly-long16S.jpg"
       ),
+      
+      
       "Wild" = list(
-        refs = list(
-          "Aoki et al. 2025" = c("Klebsiella" = 35, "Enterobacter" = 35, "Pantoea" = 20, "Other" = 10)
-        ),
-        facts = c("Wild flies: higher bacterial diversity"),
-        image = "app-medfly-long16S-wild.jpg"
+        refs = list(),
+        facts = c("No long-read studies available yet for wild flies"),
+        image = "no_data_available.jpg"
       ),
       "Lab" = list(
         refs = list(
           "Ravigne et al. 2022" = c("Citrobacter" = 15, "Enterobacter" = 70, "Klebsiella" = 10, "Providencia" = 5),
-          "Mason et al. 2025" = c("Enterococcus" = 50, "Enterobacter" = 15, "Pantoea" = 30, "Other" = 5),
+          "Mason et al. 2025" = c("Enterococcus" = 50, "Enterobacter" = 15, "Pantoea" = 35, "Other" = 5),
           "Aoki et al. 2025" = c("Enterococcus" = 50, "Klebsiella" = 5, "Enterobacter" = 15, "Serratia" = 10, "Providencia" = 20)
         ),
         facts = c("Lab flies: simplified microbiota"),
@@ -71,24 +62,37 @@ microbiota_db <- list(
     "Short-read 16S" = list(
       "Mass-reared" = list(
         refs = list(
-          "Mason et al. 2025" = c("Klebsiella" = 35, "Enterobacter" = 35, "Pantoea" = 20, "Other" = 10)
+          "Bel Mokhtar et al. 2022; V4" = c("Klebsiella" = 85, "Salmonella" = 10, "Pantoea" = 3, "Other" = 2), 
+          "Mason et al. 2024; V4" = c("Klebsiella" = 85, "Salmonella" = 10, "Pantoea" = 3, "Other" = 2), 
+          "Haytham et al. 2024; V4, 515F-805R" = c("Klebsiella" = 50, "Enterobacter" = 20, "Rauoltella" = 8, "Kluyvera" = 8, "Providencia" = 7, "Serratia" = 7)
         ),
         facts = c("Short-read 16S: high resolution of bacterial species"),
         image = "app-medfly-short16S.jpg"
+        
+        
+        
       ),
       "Wild" = list(
         refs = list(
-          "Darrington et al. 2022" = c("Klebsiella" = 60, "Enterococcus" = 10, "Pantoea" = 30), 
-          "Arias et al. 2022 - V4, 515F-806R" = c("Acinetobacter" = 40, "Lactobacillus" = 10, "Clostridiales unclassified" = 30, "Burkholderiaceae unclassified" = 30), 
-          "Jose et al. 2023 - V4, 515F-806R" = c("Klebsiella" = 85, "Commensalibacter" = 10)
+          "De Cock et al. 2020; V3-V4, 341F-805R" = c("Pluribacter" = 6, "Klebsiella" = 45, "Providencia" = 25, "Citrobacter" = 10, "Pantonea" = 4, "Enterococcus" = 6, "Psuedomonas" = 4),
+          "Nikoluli et al. 2020" = c("Tatumella" = 10, "Klebsiella" = 80, "Providencia" = 10),
+          "Cappelli et al. 2022" = c("Providencia" = 10, "Klebsiella" = 70, "Propionibacterium" = 10, "Asaia" = 5, "Chroococcidiopsis" = 5),
+          "Darrington et al. 2022; 28F-806R" = c("Klebsiella" = 60, "Enterococcus" = 10, "Pantoea" = 30), 
+          "Arias et al. 2022; V4, 515F-806R" = c("Acinetobacter" = 40, "Lactobacillus" = 10, "Other" = 50), 
+          "Jose et al. 2023; V4, 515F-806R" = c("Klebsiella" = 85, "Commensalibacter" = 10), 
+          "Tanfouri et al. 2025; V4-V5, 564F-908R" = c("Klebsiella" = 80, "Serratia" = 10, "Acetobacter" = 2, "Morganella" = 2, "Gluconobacter" = 1)
+          
         ),
         facts = c("Short-read 16S: high resolution of bacterial species"),
         image = "app-medfly-short16S.jpg"
       ),
+      
+      
       "Lab" = list(
         refs = list(
-          "Darrington et al. 2022" = c("Klebsiella" = 80, "Enterococcus" = 20)
-        ),
+          "Darrington et al. 2022; 28F-806R" = c("Klebsiella" = 80, "Enterococcus" = 20),
+          "Mason et al. 2023; V4, 515F-806R" = c("Klebsiella" = 60, "Serratia" = 20, "Providencia" = 20)
+            ),
         facts = c("Short-read 16S: high resolution of bacterial species"),
         image = "app-medfly-short16S-lab.jpg"
       )
@@ -96,30 +100,40 @@ microbiota_db <- list(
   ),
   
   
-  
-  
-  
-  "Anastrepha ludens" = list(
-    dominant = c("Pseudomonas" = 35, "Enterobacter" = 25, "Providencia" = 20, "Other" = 20),
-    facts = c(
-      "Dominant gut bacteria: Pseudomonas, Enterobacter, Providencia",
-      "Microbiota affects larval development and mating success"
-    ),
-    refs = c("Kuzina et al. 2001", "Lauzon 2003"),
-    image = "anastrepha_ludens.jpg"
-  ),
-  "Bactrocera dorsalis" = list(
-    dominant = c("Enterobacter" = 45, "Serratia" = 25, "Lactobacillus" = 20, "Other" = 10),
-    facts = c(
-      "Dominant gut bacteria: Enterobacter, Serratia, Lactobacillus",
-      "Important in host plant utilization and insecticide resistance",
-      "Candidate for probiotic supplementation in SIT programs"
-    ),
-    refs = c("Wang et al. 2011", "Noman et al. 2018"),
-    image = "bactrocera_dorsalis.jpg"
-  )
-)
 
+  "Anastrepha ludens" = list(
+    facts = "data coming soon",
+    refs = "data coming soon",
+    image = "data_coming_soon.jpg"
+  ),
+  
+  "Bactrocera dorsalis " = list(
+    facts = "data coming soon",
+    refs = "data coming soon",
+    image = "data_coming_soon.jpg"
+  ),
+  
+  
+  "Bactrocera tryoni" = list(
+    facts = "data coming soon",
+    refs = "data coming soon",
+    image = "data_coming_soon.jpg"
+  ),
+
+  "Bactrocera cucurbitae" = list(
+    facts = "data coming soon",
+    refs = "data coming soon",
+    image = "data_coming_soon.jpg"
+  ), 
+  
+  "Bactrocera oleae" = list(
+    facts = "data coming soon",
+    refs = "data coming soon",
+    image = "data_coming_soon.jpg"
+  ))
+
+  
+  
 # UI
 ui <- fluidPage(
   titlePanel("Tephritid Microbiota Atlas"),
@@ -176,35 +190,64 @@ server <- function(input, output) {
     req(get_data())
     tags$img(src = get_data()$image, height = "250px")
   })
-  
   output$compositionPlot <- renderPlot({
     data <- get_data()
     req(data)
     
     if (input$species == "Ceratitis capitata") {
       ref_list <- data$refs
+      
+      # ⛔ If no refs, show message instead of trying to plot
+      if (length(ref_list) == 0) {
+        plot.new()
+        text(0.5, 0.5, "No data available for this category", cex = 1.5)
+        return()
+      }
+      
+      # Otherwise build dataframe and plot
       df <- do.call(rbind, lapply(names(ref_list), function(ref) {
-        data.frame(Bacteria = names(ref_list[[ref]]),
-                   Abundance = ref_list[[ref]],
-                   Reference = ref)
+        data.frame(
+          Bacteria = names(ref_list[[ref]]),
+          Abundance = ref_list[[ref]],
+          Reference = ref
+        )
       }))
+      
+      # Wrap long labels
+      library(stringr)
+      df$Reference <- str_wrap(df$Reference, width = 25)
+      
       ggplot(df, aes(x = Reference, y = Abundance, fill = Bacteria)) +
         geom_bar(stat = "identity") +
         theme_minimal() +
         ylab("Relative Abundance (%)") +
         xlab("Study Reference") +
         ggtitle(paste("Microbiota Composition of", input$species)) +
-        scale_fill_brewer(palette = "Set3")
+        scale_fill_manual(
+          values = colorRampPalette(brewer.pal(12, "Set3"))(length(unique(df$Bacteria)))
+        ) +
+        theme(axis.text.x = element_text(angle = 45, hjust = 1))
+      
     } else {
       dat <- data$dominant
+      
+      if (length(dat) == 0) {
+        plot.new()
+        text(0.5, 0.5, "No data available for this category", cex = 1.5)
+        return()
+      }
+      
       df <- data.frame(Bacteria = names(dat), Abundance = dat)
+      
       ggplot(df, aes(x = "", y = Abundance, fill = Bacteria)) +
         geom_bar(stat = "identity") +
         theme_minimal() +
         ylab("Approximate Relative Abundance (%)") +
         xlab("") +
         ggtitle(paste("Microbiota Composition of", input$species)) +
-        scale_fill_brewer(palette = "Set3")
+        scale_fill_manual(
+          values = colorRampPalette(brewer.pal(12, "Set3"))(length(unique(df$Bacteria)))
+        )
     }
   })
   
